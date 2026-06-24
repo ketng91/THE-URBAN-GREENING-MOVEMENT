@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài đọc song ngữ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #ffd6ba;
+  padding: 15px;
+  color: #7a4e3e;
+}
+
+.header-left {
+  position: absolute;
+  left: 15px;
+}
+
+.header-left a {
+  text-decoration: none;
+  color: #7a4e3e;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-left a:hover {
+  color: #ff6b6b;
+}
+
+.header-center {
+  font-size: 26px;
+  text-align: center;
+}
+
+body {
+  font-family: Arial;
+  background-color: #fff8f0;
+  margin: 0;
+  text-align: center;
+}
+
+/* HEADER */
+header {
+  background-color: #ffd6ba;
+  padding: 15px;
+  color: #7a4e3e;
+}
+
+.header-center {
+  font-size: 28px;
+}
+
+/* BUTTON */
+.controls {
+  margin: 20px;
+}
+
+button {
+  padding: 10px 16px;
+  margin: 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #a0e7e5;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ffb3ba;
+}
+
+/* CONTENT */
+.container {
+  width: 80%;
+  margin: auto;
+  text-align: left;
+  font-size: 22px;
+}
+
+.pair {
+  margin-bottom: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pair.active {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: scale(1.02);
+}
+
+.speaker-icon{
+  float:right;
+  cursor:pointer;
+  color:#4a7c59;
+  margin-left:10px;
+}
+
+.speaker-icon:hover{
+  color:#ff6b6b;
+}
+
+/* EN */
+.en {
+  background: #d8f3dc;
+  padding: 12px;
+}
+
+/* VI */
+.vi {
+  background: #e3fdfd;
+  padding: 12px;
+  font-style: italic;
+  display: none;
+}
+
+/* footer */
+footer {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fff0e1;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-left">
+    <a href="https://ketng91.github.io/khoathpt_Docsongngutubaihoc/">
+      <i class="fa-solid fa-house"></i> Home
+    </a>
+  </div>
+
+  <div class="header-center">
+    LUYỆN ĐỌC DỊCH - Lesson 5: THE URBAN GREENING MOVEMENT
+  </div>
+</header>
+
+<div class="controls">
+  <button onclick="autoPlay()">▶ Auto đọc</button>
+  <button onclick="stopAuto()">⏹ Dừng</button>
+
+<button onclick="toggleAllVI()" id="toggleBtn">Hiện bản dịch</button>
+</div>
+
+<div class="container">
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    READING PASSAGE: THE URBAN GREENING MOVEMENT
+  </div>
+  <div class="vi">
+    BÀI ĐỌC: PHONG TRÀO XANH HÓA ĐÔ THỊ
+  </div>
+</div>
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    Urban areas are expanding rapidly, which often leads to the destruction of natural habitats and increased air pollution.
+  </div>
+  <div class="vi">
+    Các khu đô thị đang mở rộng nhanh chóng, điều này thường dẫn đến việc phá hủy môi trường sống tự nhiên và gia tăng ô nhiễm không khí.
+  </div>
+</div>
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    To combat these problems, many modern cities are adopting a new trend called "urban greening".
+  </div>
+  <div class="vi">
+    Để giải quyết những vấn đề này, nhiều thành phố hiện đại đang áp dụng một xu hướng mới gọi là “xanh hóa đô thị”.
+  </div>
+</div>
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    This movement focuses on adding trees, parks, and gardens to city spaces.
+  </div>
+  <div class="vi">
+    Phong trào này tập trung vào việc bổ sung cây xanh, công viên và vườn vào không gian đô thị.
+  </div>
+</div>
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    One popular method is creating rooftop gardens on top of tall apartment buildings and offices.
+  </div>
+  <div class="vi">
+    Một phương pháp phổ biến là tạo vườn trên mái các tòa nhà chung cư và văn phòng cao tầng.
+  </div>
+</div>
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    These green roofs help lower the building's temperature during hot summer days, which reduces the energy needed for air conditioning.
+  </div>
+  <div class="vi">
+    Những mái nhà xanh này giúp giảm nhiệt độ tòa nhà vào những ngày hè nóng bức, từ đó giảm năng lượng cần thiết cho điều hòa không khí.
+  </div>
+</div>
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    Furthermore, the soil and plants can absorb rainwater, preventing local floods after heavy storms.
+  </div>
+  <div class="vi">
+    Hơn nữa, đất và cây xanh có thể hấp thụ nước mưa, giúp ngăn ngừa lũ lụt cục bộ sau những trận mưa lớn.
+  </div>
+</div>
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    In Singapore, the government has taken this movement to a higher level.
+  </div>
+  <div class="vi">
+    Ở Singapore, chính phủ đã nâng phong trào này lên một tầm cao hơn.
+  </div>
+</div>
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    They require new skyscrapers to include vertical gardens on their walls.
+  </div>
+  <div class="vi">
+    Họ yêu cầu các tòa nhà chọc trời mới phải có vườn đứng trên các bức tường.
+  </div>
+</div>
+
+<div class="pair" onclick="toggleVI(this)">
+  <div class="en">
+    These vertical green walls not only trap dust and clean the air but also provide homes for small birds and insects, bringing biodiversity back into the heart of the city.
+  </div>
+  <div class="vi">
+    Những bức tường xanh đứng này không chỉ giữ bụi và làm sạch không khí mà còn tạo nơi sống cho các loài chim nhỏ và côn trùng, đưa đa dạng sinh học quay trở lại trung tâm thành phố.
+  </div>
+</div>
+
+</div>
+<footer>© Lớp Anh thầy Kết</footer>
+
+<script>
+let showAll = false;
+
+function toggleAllVI() {
+  const viList = document.querySelectorAll('.vi');
+  const btn = document.getElementById('toggleBtn');
+
+  showAll = !showAll;
+
+  viList.forEach(v => {
+    v.style.display = showAll ? 'block' : 'none';
+  });
+
+  btn.innerText = showAll ? 'Ẩn bản dịch' : 'Hiện bản dịch';
+}
+
+/* ===== TOGGLE DỊCH TỪNG CÂU ===== */
+function toggleVI(el) {
+  const vi = el.querySelector('.vi');
+  vi.style.display = (vi.style.display === 'block') ? 'none' : 'block';
+}
+
+/* ===== SPEECH ===== */
+function speak(text){
+
+  speechSynthesis.cancel();
+
+  const utter = new SpeechSynthesisUtterance(text);
+
+  utter.lang = "en-US";
+
+  // đọc tự nhiên hơn
+  utter.rate = 0.9;
+  utter.pitch = 1.1;
+  utter.volume = 1;
+
+  const voices = speechSynthesis.getVoices();
+
+  // ưu tiên các giọng nữ
+  const femaleVoice =
+      voices.find(v => v.name.includes("Jenny")) ||
+      voices.find(v => v.name.includes("Aria")) ||
+      voices.find(v => v.name.includes("Female")) ||
+      voices.find(v => v.name.includes("Zira")) ||
+      voices.find(v => v.name.includes("Samantha")) ||
+      voices.find(v => v.name.includes("Google UK English Female")) ||
+      voices.find(v => v.name.includes("Google US English")) ||
+      voices.find(v => v.lang === "en-US");
+
+  if(femaleVoice){
+      utter.voice = femaleVoice;
+      console.log("Using voice:", femaleVoice.name);
+  }
+
+  speechSynthesis.speak(utter);
+}
+/* DOUBLE CLICK ĐỂ NGHE */
+document.querySelectorAll('.pair').forEach(pair => {
+  pair.addEventListener('dblclick', () => {
+    const text = pair.querySelector('.en').innerText;
+    speechSynthesis.cancel();
+    speak(text);
+  });
+});
+
+/* ===== AUTO ĐỌC ===== */
+let index = 0;
+let interval;
+
+function autoPlay() {
+  const pairs = document.querySelectorAll('.pair');
+  index = 0;
+
+  speechSynthesis.cancel();
+
+  interval = setInterval(() => {
+    if (index >= pairs.length) {
+      clearInterval(interval);
+      return;
+    }
+
+    const text = pairs[index].querySelector('.en').innerText;
+    speak(text);
+
+    index++;
+  }, 3500);
+}
+
+function stopAuto() {
+  clearInterval(interval);
+  speechSynthesis.cancel();
+}
+
+document.querySelectorAll('.en').forEach(en => {
+
+  const text = en.innerText.trim();
+
+  const icon = document.createElement('i');
+
+  icon.className =
+    'fa-solid fa-volume-high speaker-icon';
+
+  icon.onclick = function(e){
+    e.stopPropagation();
+    speak(text);
+  };
+
+  en.appendChild(icon);
+
+});
+
+speechSynthesis.onvoiceschanged = () => {
+  speechSynthesis.getVoices();
+};
+
+</script>
+
+</body>
+</html>
