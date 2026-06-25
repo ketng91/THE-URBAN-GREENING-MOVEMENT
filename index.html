@@ -37,8 +37,11 @@ header {
 }
 
 .header-center {
-  font-size: 26px;
+  font-size: 28px;
   text-align: center;
+  padding: 0 120px; /* chừa chỗ cho Home */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 body {
@@ -129,6 +132,37 @@ footer {
   margin-top: 30px;
   padding: 20px;
   background: #fff0e1;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  header{
+    padding: 12px 10px;
+  }
+
+  .header-left{
+    left: 10px;
+    top: 12px;
+  }
+
+  .header-left a{
+    font-size: 16px;
+  }
+
+  .header-center{
+    font-size: 18px;
+    line-height: 1.4;
+    padding: 0 70px; /* tránh đè vào Home */
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  .container{
+    width: 95%;
+    font-size: 18px;
+  }
+
 }
 </style>
 </head>
