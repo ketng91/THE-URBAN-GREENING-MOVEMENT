@@ -310,31 +310,26 @@ function speak(text){
 
   speechSynthesis.cancel();
 
-  const utter = new SpeechSynthesisUtterance(text);
+  const utter =
+    new SpeechSynthesisUtterance(text);
 
   utter.lang = "en-US";
-
-  // đọc tự nhiên hơn
   utter.rate = 0.9;
   utter.pitch = 1.1;
   utter.volume = 1;
 
   const voices = speechSynthesis.getVoices();
 
-  // ưu tiên các giọng nữ
   const femaleVoice =
       voices.find(v => v.name.includes("Jenny")) ||
       voices.find(v => v.name.includes("Aria")) ||
-      voices.find(v => v.name.includes("Female")) ||
       voices.find(v => v.name.includes("Zira")) ||
       voices.find(v => v.name.includes("Samantha")) ||
       voices.find(v => v.name.includes("Google UK English Female")) ||
-      voices.find(v => v.name.includes("Google US English")) ||
       voices.find(v => v.lang === "en-US");
 
   if(femaleVoice){
       utter.voice = femaleVoice;
-      console.log("Using voice:", femaleVoice.name);
   }
 
   speechSynthesis.speak(utter);
@@ -350,31 +345,74 @@ document.querySelectorAll('.pair').forEach(pair => {
 
 /* ===== AUTO ĐỌC ===== */
 let index = 0;
-let interval;
+let autoReading = false;
 
 function autoPlay() {
+
   const pairs = document.querySelectorAll('.pair');
-  index = 0;
 
   speechSynthesis.cancel();
 
-  interval = setInterval(() => {
-    if (index >= pairs.length) {
-      clearInterval(interval);
+  autoReading = true;
+  index = 0;
+
+  readNext();
+
+  function readNext() {
+
+    if (!autoReading || index >= pairs.length) {
+      autoReading = false;
       return;
     }
 
-    const text = pairs[index].querySelector('.en').innerText;
-    speak(text);
+    const text =
+      pairs[index].querySelector('.en').innerText
+      .replace(/\s+/g, ' ')
+      .trim();
 
-    index++;
-  }, 3500);
+    const utter =
+      new SpeechSynthesisUtterance(text);
+
+    utter.lang = "en-US";
+    utter.rate = 0.9;
+    utter.pitch = 1.1;
+    utter.volume = 1;
+
+    const voices = speechSynthesis.getVoices();
+
+    const femaleVoice =
+      voices.find(v => v.name.includes("Jenny")) ||
+      voices.find(v => v.name.includes("Aria")) ||
+      voices.find(v => v.name.includes("Zira")) ||
+      voices.find(v => v.name.includes("Samantha")) ||
+      voices.find(v => v.name.includes("Google UK English Female")) ||
+      voices.find(v => v.lang === "en-US");
+
+    if (femaleVoice) {
+      utter.voice = femaleVoice;
+    }
+
+    utter.onend = () => {
+
+      if (!autoReading) return;
+
+      index++;
+
+      setTimeout(() => {
+        readNext();
+      }, 700); // nghỉ 0.7 giây giữa các câu
+
+    };
+
+    speechSynthesis.speak(utter);
+  }
 }
 
 function stopAuto() {
-  clearInterval(interval);
+  autoReading = false;
   speechSynthesis.cancel();
 }
+
 
 document.querySelectorAll('.en').forEach(en => {
 
